@@ -35,11 +35,9 @@ def get_sales_data():
         data_str = input("Enter your data here: \n")
 
         sales_data = data_str.split(",")
-        
         if validate_data(sales_data):
             print("Data is valid!")
             break
-        
     return sales_data
 
 
@@ -85,12 +83,12 @@ def calculate_surplus_data(sales_row):
     print("Calculating surplus data...\n")
     stock = SHEET.worksheet("stock").get_all_values()
     stock_row = stock[-1]
-    
+
     surplus_data = []
     for stock, sales in zip(stock_row, sales_row):
         surplus = int(stock) - sales
         surplus_data.append(surplus)
-    
+
     return surplus_data
 
 
@@ -119,7 +117,7 @@ def calculate_stock_data(data):
 
     for column in data:
         int_column = [int(num) for num in column]
-        average = sum(int_column) / len(int_column)
+        average = sum(int_column) / len(int_column) # or / 5 either instead of / len
         stock_num = average * 1.1
         new_stock_data.append(round(stock_num))
 
@@ -141,4 +139,3 @@ def main():
 
 print("Welcome to Love Sandwiches Data Automation")
 main()
-
