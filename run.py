@@ -5,7 +5,6 @@ data from the worksheet.
 
 import gspread
 from google.oauth2.service_account import Credentials
-from pprint import pprint
 
 
 SCOPE = [
@@ -36,9 +35,11 @@ def get_sales_data():
         data_str = input("Enter your data here: \n")
 
         sales_data = data_str.split(",")
+        
         if validate_data(sales_data):
             print("Data is valid!")
             break
+        
     return sales_data
 
 
